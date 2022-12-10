@@ -1,7 +1,12 @@
 # import module
-import ge
+
 import time
 import datetime
+from utils import loadGraph, saveEmbedding
+from deepWalk import DeepWalk
+from node2vec import Node2vec
+from skipgram import SkipGramModel
+
 
 script_start = time.time()
 # Set Path to data
@@ -16,7 +21,7 @@ embedding_dir = "../data"
 # input graph
 
 
-myGraph = ge.loadGraph(data_dir, dataset, sep = "\t")
+myGraph = loadGraph(data_dir, dataset, sep = "\t")
 
 print(myGraph)
 #
@@ -29,7 +34,7 @@ windowSize = 3 # window size
 
 # Choose of the following embedding model
 # DeepWalk
-rw = ge.DeepWalk(myGraph, walkLength=walkLength, embedDim=embedDim, numbOfWalksPerVertex=numbOfWalksPerVertex, \
+rw = DeepWalk(myGraph, walkLength=walkLength, embedDim=embedDim, numbOfWalksPerVertex=numbOfWalksPerVertex, \
                  windowSize=windowSize, lr = lr)
 #
 # #  Node2Vec
@@ -42,7 +47,7 @@ rw = ge.DeepWalk(myGraph, walkLength=walkLength, embedDim=embedDim, numbOfWalksP
 #
 #
 # # Skip Gram model
-model_skip_gram = ge.SkipGramModel(rw.totalNodes, rw.embedDim)
+model_skip_gram = SkipGramModel(rw.totalNodes, rw.embedDim)
 #
 print("Learning Embedding")
 # Learning Node Embedding
@@ -54,7 +59,7 @@ model = rw.learnNodeEmbedding(model_skip_gram)
 
 # Save embedding to disk
 print("Saving embedding to disk")
-ge.saveEmbedding(data_dir, dataset_class, embedding_dir, rw)
+saveEmbedding(data_dir, dataset_class, embedding_dir, rw)
 #
 # print("Generating embedding for a node and edge")
 node1 = 35
