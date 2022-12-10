@@ -2,7 +2,6 @@ import torch
 import random
 import warnings
 import sys
-import pickle
 import csv
 from csv import reader
 try:

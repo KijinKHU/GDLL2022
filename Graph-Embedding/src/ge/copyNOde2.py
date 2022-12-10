@@ -7,7 +7,7 @@ import pickle
 import csv
 from csv import reader
 from sklearn import preprocessing
-import networkx as nx
+
 try:
     from utils import operator_hadamard, custom_formatwarning
     from randomWalkEmbedding import RandomWalkEmbedding
