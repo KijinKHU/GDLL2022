@@ -8,7 +8,7 @@ from joblib import Parallel, delayed
 import torch
 import warnings
 import sys
-import csv, pickle
+import csv
 from csv import reader
 try:
     from utils import partition_dict, preprocess_nxgraph, get_vertices, create_alias_table, cost, cost_max, \
