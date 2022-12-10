@@ -110,7 +110,7 @@ Here, classifier = ["decision tree", "dt", "logistic regression", "lr", "random 
 "gradient boosting", "gb", "multilayer preceptron", "mlp"]
 #### Get Accuracy
 ```
-print("Accuracy:", tr.accuracy(y_test, y_pred))
+print("Accuracy:", ge.accuracy(y_test, y_pred))
 ```
 <!-- LICENSE.txt -->
 ## License
