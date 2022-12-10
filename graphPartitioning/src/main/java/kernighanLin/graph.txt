@@ -1,0 +1,2 @@
+vertices: A B C D E F G H
+edges: AH(100) AG(100) AF(120) CF(100) CH(30) BC(90) BD(300) DE(100)
