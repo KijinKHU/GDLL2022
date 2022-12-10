@@ -2,6 +2,7 @@
 import ge
 import time
 import datetime
+from GDLL2022.graph import GDLLGraph
 script_start = time.time()
 # Set Path to data
 # dataset = "citeseer - Copy"
@@ -13,7 +14,11 @@ data_dir = "../data/cora"
 embedding_dir = "../data"
 
 # input graph
-myGraph = ge.loadGraph(data_dir, dataset, sep = "\t")
+from GDLL2022.graph.GDLLGraph import Graph
+
+myGraph = Graph.loadGraph(data_dir, dataset, sep = "\t")
+
+print(myGraph)
 #
 # Set Parameters
 embedDim = 3 # embedding size

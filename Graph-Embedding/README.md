@@ -3,11 +3,6 @@
 This module provides the services and implementation for various graph embedding models.
 
 ## Getting Started
-### Installation
-
-You can install the DGLL Graph Embedding version 1.0.3 from [PyPI](https://pypi.org/project/dgllge/) as:
-
-    pip install dgllge
 
 ## Usage and Tutorial
 #### input graph
@@ -22,7 +17,7 @@ dataset = "File/Dataset Name"
 
 
 # Load a Graph
-inputGraph = ge.loadGraph(data_dir, dataset)
+inputGraph = ge.loadGraph(data_dir, dataset, sep = "\t")
 ```
 
 #### Configurable Parameter for Graph Embedding
@@ -97,42 +92,22 @@ import scipy.sparse as sp
 
 #### Load Embedding
 ```
-idsEmbeddingClsLabels = np.genfromtxt("cora.embedding", dtype=np.dtype(str))
+embedding, labels = ge.loadEmbeddingWithClassLabels("Name of the embedding file")
 ```
 
-#### Prepare data for training 
-```
-labels = idsEmbeddingClsLabels[:, -1]
-embedding = sp.csr_matrix(idsEmbeddingClsLabels[:, 1:-1], dtype=np.float32)
-```
 
-```
-tr = ge.TrainingClassifiers()
-y = tr.labelEnocder(labels)
-```
 #### Prepare Train test data
 ```
-X_train, X_test, y_train, y_test = tr.prepareTrainTestData(embedding, labels, 0.33)
+X_train, X_test, y_train, y_test = ge.train_test_split(embedding, labels, test_split = 0.33)
 ```
 
 #### Choose one of the following classifier for training a classifier
 
 ```
-y_pred = tr.applyDecisionTree(X_train.toarray(), y_train, X_test.toarray())
+y_pred, clf = ge.classify(X_train, y_train, X_test, classifier = "gb")
 ```
-```
-y_pred = tr.applyLogistic(X_train.toarray(), y_train, X_test.toarray())
-```
-
-```
-y_pred = tr.applyRandomForest(X_train.toarray(), y_train, X_test.toarray())
-```
-```
-y_pred = tr.apply_GradientBoosting(X_train.toarray(), y_train, X_test.toarray())
-```
-```
-y_pred = tr.applyMLP(X_train.toarray(), y_train, X_test.toarray())
-```
+Here, classifier = ["decision tree", "dt", "logistic regression", "lr", "random forest", "rf" ,
+"gradient boosting", "gb", "multilayer preceptron", "mlp"]
 #### Get Accuracy
 ```
 print("Accuracy:", tr.accuracy(y_test, y_pred))
