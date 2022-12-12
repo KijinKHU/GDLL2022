@@ -7,17 +7,20 @@ This module provides the services and implementation for various graph embedding
 ## Usage and Tutorial
 #### input graph
 ```
-# import module
-import ge
+from utils import loadGraph, saveEmbedding
+from deepWalk import DeepWalk
+from node2vec import Node2vec
+from skipgram import SkipGramModel
 
 
 # Set Path to Data
 data_dir = "Your Path to Data"
 dataset = "File/Dataset Name"
+sep = "column separator"
 
 
 # Load a Graph
-inputGraph = ge.loadGraph(data_dir, dataset, sep = "\t")
+inputGraph = ge.loadGraph(data_dir, dataset, sep)
 ```
 
 #### Configurable Parameter for Graph Embedding
@@ -32,24 +35,24 @@ windowSize = 3 # window size
 #### Choose One of the Following Graph Embedding Models
 ```
 # DeepWalk
-rw = ge.DeepWalk(inputGraph, walkLength=walkLength, embedDim=embedDim, numbOfWalksPerVertex=numbOfWalksPerVertex, \
+rw = DeepWalk(inputGraph, walkLength=walkLength, embedDim=embedDim, numbOfWalksPerVertex=numbOfWalksPerVertex, \
               windowSize=windowSize, lr = lr)
               
  ```
 ```
 # Node2Vec
-rw = ge.Node2vec(inputGraph, walkLength=walkLength, embedDim=embedDim, numbOfWalksPerVertex=numbOfWalksPerVertex, \
+rw = Node2vec(inputGraph, walkLength=walkLength, embedDim=embedDim, numbOfWalksPerVertex=numbOfWalksPerVertex, \
                windowSize=windowSize, lr=lr, p = 0.5, q = 0.8)
 ```
 ```
 # Struc2Vec
-rw = ge.Struc2Vec(inputGraph, walkLength=walkLength, embedDim=embedDim, numbOfWalksPerVertex=numbOfWalksPerVertex, \
+rw = Struc2Vec(inputGraph, walkLength=walkLength, embedDim=embedDim, numbOfWalksPerVertex=numbOfWalksPerVertex, \
               windowSize=windowSize, lr = lr)
 ```
               
 #### Skip Gram model
 ```
-modelSkipGram = ge.SkipGramModel(rw.totalNodes, rw.embedDim)
+modelSkipGram = SkipGramModel(rw.totalNodes, rw.embedDim)
 ```
 #### Want Node Embedding or Edge Embedding
 ```
@@ -65,7 +68,7 @@ model = rw.learnEdgeEmbedding(modelSkipGram)
 
 #### Save Embedding to Disk
 ```
-ge.saveEmbedding(data_dir, dataset, rw)
+saveEmbedding(data_dir, dataset, rw)
 ```
 #### Generate  Embedding for a Specific Node or Edge
 ```
@@ -84,15 +87,12 @@ print("Edge Embedding", emb)
 ### Utilize embedding for training classification models/classifiers
 
 ```
-# import modules
-import ge
-import numpy as np
-import scipy.sparse as sp
+from utils import loadEmbeddingWithClassLabels, train_test_split, classify, accuracy
 ```
 
 #### Load Embedding
 ```
-embedding, labels = ge.loadEmbeddingWithClassLabels("Name of the embedding file")
+embedding, labels = loadEmbeddingWithClassLabels("Name of the embedding file")
 ```
 
 
@@ -104,13 +104,13 @@ X_train, X_test, y_train, y_test = ge.train_test_split(embedding, labels, test_s
 #### Choose one of the following classifier for training a classifier
 
 ```
-y_pred, clf = ge.classify(X_train, y_train, X_test, classifier = "gb")
+y_pred, clf = classify(X_train, y_train, X_test, classifier = "gb")
 ```
 Here, classifier = ["decision tree", "dt", "logistic regression", "lr", "random forest", "rf" ,
 "gradient boosting", "gb", "multilayer preceptron", "mlp"]
 #### Get Accuracy
 ```
-print("Accuracy:", ge.accuracy(y_test, y_pred))
+print("Accuracy:", accuracy(y_test, y_pred))
 ```
 <!-- LICENSE.txt -->
 ## License
