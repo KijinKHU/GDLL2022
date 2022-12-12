@@ -2,7 +2,7 @@ import warnings
 warnings.filterwarnings("ignore")
 import numpy as np
 import scipy.sparse as sp
-from utils import *
+from utils import loadEmbeddingWithClassLabels, train_test_split, classify, accuracy
 # Load Embedding
 path = "../data/cora - copy1.content.embedding"
 

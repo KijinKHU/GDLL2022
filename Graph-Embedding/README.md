@@ -7,8 +7,6 @@ This module provides the services and implementation for various graph embedding
 ## Usage and Tutorial
 #### input graph
 ```
-import time
-import datetime
 from utils import loadGraph, saveEmbedding
 from deepWalk import DeepWalk
 from node2vec import Node2vec
@@ -89,10 +87,7 @@ print("Edge Embedding", emb)
 ### Utilize embedding for training classification models/classifiers
 
 ```
-# import modules
-import ge
-import numpy as np
-import scipy.sparse as sp
+from utils import loadEmbeddingWithClassLabels, train_test_split, classify, accuracy
 ```
 
 #### Load Embedding
