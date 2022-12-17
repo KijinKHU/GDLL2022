@@ -1,19 +1,24 @@
 # import module
+import sys
 
+# append the path of the
+# parent directory
+sys.path.append("..")
 import time
 import datetime
 from utils import loadGraph, saveEmbedding
 from deepWalk import DeepWalk
-from node2vec import Node2vec
+from GDLLGraph import GDLLGraph
 from skipgram import SkipGramModel
 
 
 script_start = time.time()
 # Set Path to data
 # dataset = "citeseer - Copy"
-# dataset = "cora.cites"
-dataset = "cora - copy1.cites"
-dataset_class = "cora - copy1.content"
+dataset = "cora.cites"
+dataset_class = "cora.content"
+# dataset = "cora - copy1.cites"
+# dataset_class = "cora - copy1.content"
 
 data_dir = "../data/cora"
 embedding_dir = "../data"
@@ -21,8 +26,10 @@ embedding_dir = "../data"
 # input graph
 
 
-myGraph = loadGraph(data_dir, dataset, sep = "\t")
+# myGraph = loadGraph(data_dir, dataset, sep = "\t")
 
+myGraph = GDLLGraph(data_dir, dataset, dataset_features = None, sep= "\t")
+myGraph = myGraph.g
 print(myGraph)
 #
 # Set Parameters
