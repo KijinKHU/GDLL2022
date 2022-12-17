@@ -33,20 +33,23 @@ class GDLLGraph:
     def removeEdge(self, edge):
         self.g.remove_edge(*edge)
 
-    def getNode(self):
+    def getNodes(self):
         return self.g.nodes
 
     def GetNeighbors(self, node):
         return self.g.neighbors(node)
+
+    def removeNode(self, node):
+        self.g.remove_node(node)
 
 
 
     # def example(self):
     #     print("print sfdsf sdf")
 
-data_dir = "../data/cora"
-embedding_dir = "../data"
-dataset = "cora - copy1.cites"
-dataset_features = "cora - copy1.content"
-g = Graph(data_dir, dataset, dataset_features, sep = "\t" )
-print(g.node_data)
+# data_dir = "../data/cora"
+# embedding_dir = "../data"
+# dataset = "cora - copy1.cites"
+# dataset_features = "cora - copy1.content"
+# g = Graph(data_dir, dataset, dataset_features, sep = "\t" )
+# print(g.node_data)
