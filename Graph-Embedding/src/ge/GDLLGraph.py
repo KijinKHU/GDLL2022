@@ -35,7 +35,7 @@ class GDLLGraph:
     def removeEdge(self, edge):
         self.g.remove_edge(*edge)
 
-    def getNode(self):
+    def getNodes(self):
         return self.g.nodes()
 
     def GetNeighbors(self, node):
