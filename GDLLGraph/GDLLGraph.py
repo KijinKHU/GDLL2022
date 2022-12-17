@@ -16,7 +16,7 @@ class GDLLGraph:
         self.g = nx.from_pandas_edgelist(edgelist)
 
         if dataset_features != None:
-            feature_names = ["w_{}".format(ii) for ii in range(1433)]
+            feature_names = ["feat_{}".format(ii) for ii in range(1433)]
             column_names =  feature_names + ["label"]
             self.node_data = pd.read_csv(os.path.join(data_dir, dataset_features), sep='\t', header=None, names=column_names)
 
@@ -45,8 +45,7 @@ class GDLLGraph:
     #     print("print sfdsf sdf")
 
 data_dir = "../Graph-Embedding/src/data/cora"
-embedding_dir = "../Graph-Embedding/src/data"
-dataset = "cora - copy1.cites"
-dataset_features = "cora - copy1.content"
-g = Graph(data_dir, dataset, dataset_features, sep = "\t" )
+dataset = "cora.cites"
+dataset_features = "cora.content"
+g = GDLLGraph(data_dir, dataset, dataset_features, sep = "\t" )
 print(g.node_data)
