@@ -33,7 +33,7 @@ class GDLLGraph:
     def removeEdge(self, edge):
         self.g.remove_edge(*edge)
 
-    def getNode(self):
+    def getNodes(self):
         return self.g.nodes
 
     def GetNeighbors(self, node):
@@ -44,8 +44,8 @@ class GDLLGraph:
     # def example(self):
     #     print("print sfdsf sdf")
 
-data_dir = "../Graph-Embedding/src/data/cora"
-dataset = "cora.cites"
-dataset_features = "cora.content"
-g = GDLLGraph(data_dir, dataset, dataset_features, sep = "\t" )
-print(g.node_data)
+# data_dir = "../Graph-Embedding/src/data/cora"
+# dataset = "cora.cites"
+# dataset_features = "cora.content"
+# g = GDLLGraph(data_dir, dataset, dataset_features, sep = "\t" )
+# print(g.node_data)
