@@ -86,8 +86,5 @@ g.node_data
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Links
-Project's GitHub Link: [@Graph-Embedding](https://github.com/sahibzada-irfanullah/Graph-Embedding)
-
-Project's PyPI Link: [@dgllge](https://pypi.org/project/dgllge/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
