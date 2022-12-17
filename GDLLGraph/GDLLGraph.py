@@ -44,8 +44,8 @@ class GDLLGraph:
     # def example(self):
     #     print("print sfdsf sdf")
 
-data_dir = "../data/cora"
-embedding_dir = "../data"
+data_dir = "../Graph-Embedding/src/data/cora"
+embedding_dir = "../Graph-Embedding/src/data"
 dataset = "cora - copy1.cites"
 dataset_features = "cora - copy1.content"
 g = Graph(data_dir, dataset, dataset_features, sep = "\t" )
