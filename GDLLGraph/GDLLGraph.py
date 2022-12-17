@@ -9,6 +9,7 @@ class GDLLGraph:
         edgelist = pd.read_csv(os.path.join(data_dir, dataset), sep= sep, header=None, names=["target", "source"])
         edgelist["target"] = edgelist["target"].astype(str)
         edgelist["source"] = edgelist["source"].astype(str)
+        self.node_data = None
 
         if len(edgelist.columns) < 2:
             print("Error: Make sure that you have given the right column separator and your data has source nodes and column nodes columns!!")
@@ -34,10 +35,13 @@ class GDLLGraph:
         self.g.remove_edge(*edge)
 
     def getNodes(self):
-        return self.g.nodes
+        return self.g.nodes()
 
     def GetNeighbors(self, node):
-        return self.g.neighbors(node)
+        try:
+            return self.g.neighbors(node)
+        except:
+            return self.g.neighbors(str(node))
 
     def removeNode(self, node):
         self.g.remove_node(node)
@@ -47,16 +51,16 @@ class GDLLGraph:
     # def example(self):
     #     print("print sfdsf sdf")
 
-<<<<<<< HEAD:Graph-Embedding/src/GDLLGraph/GDLLGraph.py
+# <<<<<<< HEAD:Graph-Embedding/src/GDLLGraph/GDLLGraph.py
 # data_dir = "../data/cora"
 # embedding_dir = "../data"
 # dataset = "cora - copy1.cites"
 # dataset_features = "cora - copy1.content"
 # g = Graph(data_dir, dataset, dataset_features, sep = "\t" )
-=======
+# =======
 # data_dir = "../Graph-Embedding/src/data/cora"
 # dataset = "cora.cites"
 # dataset_features = "cora.content"
 # g = GDLLGraph(data_dir, dataset, dataset_features, sep = "\t" )
->>>>>>> refs/remotes/origin/main:GDLLGraph/GDLLGraph.py
+# >>>>>>> refs/remotes/origin/main:GDLLGraph/GDLLGraph.py
 # print(g.node_data)
