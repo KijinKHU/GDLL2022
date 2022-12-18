@@ -70,7 +70,7 @@ class Node2vec(RandomWalkEmbedding):
 
     # Walks generation
     def RandomWalk(self):
-        f = open('../data/node2vec_input.csv', 'w', newline ='')
+        f = open('../data/ML_input.csv', 'w', newline ='')
         for startNode in list(self.graph.nodes):
             for i in range(self.numbOfWalksPerVertex):
                 # walkStartNode = self.RandomWalk(startNode, self.walkLength)
@@ -140,7 +140,7 @@ class Node2vec(RandomWalkEmbedding):
     # Training graph embedding model
     # Training graph embedding model
     def learnEmbedding(self):
-        f = open('../data/node2vec_input.csv', 'r')
+        f = open('../data/ML_input.csv', 'r')
         file_reader = reader(f)
         for wvi in file_reader:
             for j in range(len(wvi)):
