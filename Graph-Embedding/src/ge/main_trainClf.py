@@ -12,7 +12,7 @@ X_train, X_test, y_train, y_test = train_test_split(embedding, labels, test_spli
 
 
 # learn classification
-y_pred, clf = classify(X_train, y_train, X_test, classifier = "rf")
+y_pred, clf = classify(X_train, y_train, X_test, classifier = "lr")
 
 
 # Choose one of the following classifier for training train a classifier
