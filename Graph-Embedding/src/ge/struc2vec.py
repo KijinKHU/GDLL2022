@@ -67,7 +67,7 @@ class Struc2Vec(RandomWalkEmbedding):
 
     # Walks generation
     def RandomWalk(self):
-        f = open('../data/struc2vec_input.csv', 'w', newline ='')
+        f = open('../data/ML_input.csv', 'w', newline ='')
         for startNode in list(self.graph.nodes):
             for i in range(self.numbOfWalksPerVertex):
                 try:
@@ -98,7 +98,7 @@ class Struc2Vec(RandomWalkEmbedding):
 
     # Training graph embedding model
     def learnEmbedding(self):
-        f = open('../data/struc2vec_input.csv', 'r')
+        f = open('../data/ML_input.csv', 'r')
         file_reader = reader(f)
         for wvi in file_reader:
             for j in range(len(wvi)):

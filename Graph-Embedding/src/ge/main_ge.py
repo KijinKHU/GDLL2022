@@ -1,13 +1,12 @@
-# import module
-import sys
 
-# append the path of the
-# parent directory
+import sys
 sys.path.append("..")
 import time
 import datetime
-from utils import loadGraph, saveEmbedding
+from utils import saveEmbedding
 from deepWalk import DeepWalk
+from node2vec import Node2vec
+from struc2vec import Struc2Vec
 from GDLLGraph import GDLLGraph
 from skipgram import SkipGramModel
 
@@ -15,23 +14,21 @@ from skipgram import SkipGramModel
 script_start = time.time()
 # Set Path to data
 # dataset = "citeseer - Copy"
-dataset = "cora.cites"
-dataset_class = "cora.content"
-# dataset = "cora - copy1.cites"
-# dataset_class = "cora - copy1.content"
+# dataset = "cora.cites"
+# dataset_class = "cora.content"
+
+# set path to data
+graph = "cora - copy1.cites"
+graph_features = "cora - copy1.content"
 
 data_dir = "../data/cora"
 embedding_dir = "../data"
 
-# input graph
+# Load graph
 
-
-# myGraph = loadGraph(data_dir, dataset, sep = "\t")
-
-myGraph = GDLLGraph(data_dir, dataset, dataset_features = None, sep= "\t")
+myGraph = GDLLGraph(data_dir, graph, graph_features = graph_features, sep= "\t")
 myGraph = myGraph.g
-print(myGraph)
-#
+
 # Set Parameters
 embedDim = 3 # embedding size
 numbOfWalksPerVertex = 3 # walks per vertex
@@ -41,16 +38,16 @@ windowSize = 3 # window size
 
 # Choose of the following embedding model
 # DeepWalk
-rw = DeepWalk(myGraph, walkLength=walkLength, embedDim=embedDim, numbOfWalksPerVertex=numbOfWalksPerVertex, \
-                 windowSize=windowSize, lr = lr)
+# rw = DeepWalk(myGraph, walkLength=walkLength, embedDim=embedDim, numbOfWalksPerVertex=numbOfWalksPerVertex, \
+#                  windowSize=windowSize, lr = lr)
 #
 # #  Node2Vec
-# rw = ge.Node2vec(myGraph, walkLength=walkLength, embedDim=embedDim, numbOfWalksPerVertex=numbOfWalksPerVertex, \
+# rw = Node2vec(myGraph, walkLength=walkLength, embedDim=embedDim, numbOfWalksPerVertex=numbOfWalksPerVertex, \
 #                  windowSize=windowSize, lr=lr, p = 0.5, q = 1)
 #
-# # # # Struc2Vec
-# # rw = ge.Struc2Vec(myGraph, walkLength=walkLength, embedDim=embedDim, numbOfWalksPerVertex=numbOfWalksPerVertex, \
-# #                   windowSize=windowSize, lr = lr, stay_prob=0.3)
+#  Struc2Vec
+rw = Struc2Vec(myGraph, walkLength=walkLength, embedDim=embedDim, numbOfWalksPerVertex=numbOfWalksPerVertex, \
+                  windowSize=windowSize, lr = lr, stay_prob=0.3)
 #
 #
 # # Skip Gram model
@@ -66,7 +63,7 @@ model = rw.learnNodeEmbedding(model_skip_gram)
 
 # Save embedding to disk
 print("Saving embedding to disk")
-saveEmbedding(data_dir, dataset_class, embedding_dir, rw)
+saveEmbedding(data_dir, graph_features, embedding_dir, rw)
 #
 # print("Generating embedding for a node and edge")
 node1 = 35

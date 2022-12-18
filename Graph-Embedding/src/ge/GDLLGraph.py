@@ -49,11 +49,11 @@ class GDLLGraph:
     # def example(self):
     #     print("print sfdsf sdf")
 
-data_dir = "../data/cora"
-embedding_dir = "../data"
-dataset = "cora - copy1.cites"
-dataset_features = "cora - copy1.content"
-g = GDLLGraph(data_dir, dataset, dataset_features, sep = "\t" )
-
-print(g.node_data)
-print(list(g.GetNeighbors(35)))
+# data_dir = "../data/cora"
+# embedding_dir = "../data"
+# dataset = "cora - copy1.cites"
+# dataset_features = "cora - copy1.content"
+# g = GDLLGraph(data_dir, dataset, dataset_features, sep = "\t" )
+#
+# print(g.node_data)
+# print(list(g.GetNeighbors(35)))

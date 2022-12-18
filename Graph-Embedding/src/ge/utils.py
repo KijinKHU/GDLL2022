@@ -267,37 +267,21 @@ def saveEmbedding(data_dir, dataset, embedding_dir, dw):
         df.to_csv("{}{}.embedding".format(embedding_dir + "/", dataset), sep='\t', header=False)
 
 
-def loadGraph(data_dir, dataset, sep):
-    # Load Data
-    print("Loading Data...")
-    data_dir = os.path.expanduser(data_dir)
-    edgelist = pd.read_csv(os.path.join(data_dir, dataset), sep= sep, header=None, names=["target", "source"])
-    # edgelist["target"] = edgelist["target"].values.astype(str)
-    # edgelist["source"] = edgelist["source"].values.astype(str)
-    edgelist["target"] = edgelist["target"].astype(str)
-    edgelist["source"] = edgelist["source"].astype(str)
-    if len(edgelist.columns) < 2:
-        print("Error: Make sure that you have given the right column separator and your data has source nodes and column nodes columns!!")
-        quit()
-    return nx.from_pandas_edgelist(edgelist)
 
 # custom format warning with only a message
 def custom_formatwarning(msg, *args, **kwargs):
     return str(msg) + '\n'
 warnings.formatwarning = custom_formatwarning
 
-def loadEmbeddingWithClassLabels(path):
+def loadEmbedding(path):
     print("Load Embedding")
     idsEmbeddingClsLabels = np.genfromtxt(path, dtype=np.dtype(str))
     labels = idsEmbeddingClsLabels[:, -1]
     embedding = sp.csr_matrix(idsEmbeddingClsLabels[:, 1:-1], dtype=np.float32)
     return embedding, labels
 
-def loadEmbedding(path):
-    print("Load Embedding")
-    idsEmbedding = np.genfromtxt(path, dtype=np.dtype(str))
-    embedding = sp.csr_matrix(idsEmbedding[:, 1:], dtype=np.float32)
-    return embedding
+
+
 def train_test_split(embedding, labels, test_split = 0.33):
     from Classifiers import TrainingClassifiers
     tr = TrainingClassifiers()
