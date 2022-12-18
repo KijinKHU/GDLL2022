@@ -1,4 +1,6 @@
 import string
+import networkx as nx
+import numpy as np
 
 
 class Sampler(object):
@@ -25,8 +27,14 @@ class NeighborSamplerByNode(Sampler):
 
     def sample_mfg(self, graph, nodes, fanout, replace):
         edges_list = graph.GetEdges(nodes)
-        mfg = graph.GetNeighbors(nodes)
-        return mfg
+        # mfg = graph.GetNeighbors(nodes)
+        for node in nodes:
+            edges = graph.getEdges(node)
+            num_edges = len(edges)
+            neighbors = [e[0] for e in edges]
+            sampled_neighbors = np.random.choice(neighbors, fanout)
+            print(sampled_neighbors)
+        return edges_list
 
     def sample(self, graph, nodes):
         source_nodes = nodes
