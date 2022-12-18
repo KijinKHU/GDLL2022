@@ -144,7 +144,7 @@ def load_khop(path="./datasets/cora/", dataset="cora", khops =1):
 
     return adj, features, labels, idx_train, idx_val  #, idx_test
 
-def load_data(path="./datasets/cora/", dataset="cora"):
+def load_data(path="./Datasets/Cora/", dataset="cora"):
 
     print('Loading {} dataset...'.format(dataset))
 

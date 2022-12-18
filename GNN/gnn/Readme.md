@@ -1,10 +1,10 @@
 # Graph neural networks library 
 
 ### Introduction
-This package contains implementation for popular Graph neural network models such as GCN, GraphSage, and GAT.
+This package contains implementation for popular Graph neural network models such as GCN, GraphSage, and GAT etc.
 It also contains Global Pooling methods such as sum, mean, and max
 In future we will add more GNNs models and will improve its performance both in a single
-and distributed environment for GNNs
+and distributed environment for GNNs training and inferences.
 
 #### Requirements
 ```

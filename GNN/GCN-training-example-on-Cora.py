@@ -10,6 +10,7 @@ import torch.optim as optim
 from utils.utils import multihop_sampling
 from utils.utils import load_data, load_khop, accuracy
 from gnn.Convolution import gcnConv
+import GDLLGraph
 
 import tqdm
 
@@ -42,6 +43,10 @@ if args.cuda:
 # Load data
 adj, features, labels, idx_train, idx_val, idx_test = load_data()
 # adj, features, labels, idx_train, idx_val = load_data()
+# data_dir = "../Datasets/cora"
+# dataset = "cora.cites"
+# dataset_features = "cora.content"
+# g = GDLLGraph(data_dir, dataset, dataset_features, sep = "\t" )
 
 # Model and optimizer
 class GCN(torch.nn.Module):

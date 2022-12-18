@@ -10,13 +10,6 @@ import torch.nn.functional as F
 # a non linear function.
 # date created = 22 Oct, 2021, Project name : GDBMs, created by: Tariq Habib Afridi, email address: afridi@khu.ac.kr
 
-
-r"""
-This class has been developed to accomodate various spatial convolution graph algorithms
-Initial Graph convolution network, Graph Attention network and GraphSage has been implemented
-User can create multiple layer GCN. GraphSage and GAT models using methods from these class
-"""
-
 class NeighborAggregator(nn.Module):
     """ This class provides neighbor aggregation based on three functions such as mean, sum, and max
     used in sageConv of GraphSage conv layer.
