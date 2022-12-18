@@ -1,3 +1,6 @@
+import string
+
+
 class Sampler(object):
 
     def sample_mfg(self, graph, indices):
@@ -11,13 +14,18 @@ class NeighborSamplerByNode(Sampler):
 
     def __init__(self, fanouts, edge_dir='in', prob=None, mask=None, replace=False):
         super().__init__()
-        self.fanouts = fanouts
+        if isinstance(fanouts, list):
+            self.fanouts = fanouts
+        elif isinstance(fanouts, string):
+            string_list = fanouts.split(',')
+            self.fanouts = list(map(int, string_list))
+
         self.edge_dir = edge_dir
         self.MFGs = []
 
     def sample_mfg(self, graph, node_indices, replace):
-
         mfg = graph.GetNeighbors(node_indices)
+        return mfg
 
     def sample(self, graph, node_indices):
         source_idices = node_indices

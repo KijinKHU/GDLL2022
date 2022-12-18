@@ -46,6 +46,8 @@ class GDLLGraph:
     def removeNode(self, node):
         self.g.remove_node(node)
 
+    def GetSubgraph(self, nodeBunchs):
+        return self.g.subgraph(nodeBunchs)
 
 
     # def example(self):
