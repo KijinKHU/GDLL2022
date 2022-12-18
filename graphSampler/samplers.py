@@ -23,14 +23,15 @@ class NeighborSamplerByNode(Sampler):
         self.edge_dir = edge_dir
         self.MFGs = []
 
-    def sample_mfg(self, graph, node_indices, replace):
-        mfg = graph.GetNeighbors(node_indices)
+    def sample_mfg(self, graph, nodes, fanout, replace):
+        edges_list = graph.GetEdges(nodes)
+        mfg = graph.GetNeighbors(nodes)
         return mfg
 
-    def sample(self, graph, node_indices):
-        source_idices = node_indices
+    def sample(self, graph, nodes):
+        source_nodes = nodes
         for fanout in self.fanouts:
-            source_idices, mfg = self.sample_mfg(graph, node_indices, replace=True)
+            source_idices, mfg = self.sample_mfg(graph, nodes, fanout, replace=True)
             self.MFGs.append(mfg)
 
         return self.MFGs

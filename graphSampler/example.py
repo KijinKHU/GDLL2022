@@ -19,7 +19,14 @@ data_dir = "../Graph-Embedding/src/data/cora"
 dataset = "cora.cites"
 dataset_features = "cora.content"
 g = GDLLGraph(data_dir, dataset, dataset_features, sep = "\t" )
-print(g.node_data)
+# print("node_data: ",g.node_data)
+# neiborsOfOneNode = g.GetNeighbors(31336)
+# print(type(neiborsOfOneNode))
+
+print([e for e in g.getNodes(31336)])
+print([e for e in g.getEdges(('31336'))])
+
+
 
 fanouts = "10,10,10"
 
