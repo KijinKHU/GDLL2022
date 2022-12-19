@@ -40,9 +40,3 @@ print(MFGs)
 # '31349', '194617', '1063773', '31349', '31349', '10531', '31349', '1129442', '686532', '286562'],
 # <networkx.classes.graph.Graph object at 0x0000022E9DB09370>]
 # ]
-
-
-
-fanouts = "10,10,10"
-
-# sampler = samplers.NeighborSamplerByNode(g, fanouts, edge_dir="in")
