@@ -26,20 +26,30 @@ class NeighborSamplerByNode(Sampler):
         self.MFGs = []
 
     def sample_mfg(self, graph, nodes, fanout, replace):
-        edges_list = graph.GetEdges(nodes)
-        # mfg = graph.GetNeighbors(nodes)
+        MFG = nx.Graph()
+        src_nodes = []
+        dst_nodes = []
         for node in nodes:
             edges = graph.getEdges(node)
-            num_edges = len(edges)
-            neighbors = [e[0] for e in edges]
+            neighbors = [e[1] for e in edges]
             sampled_neighbors = np.random.choice(neighbors, fanout)
-            print(sampled_neighbors)
-        return edges_list
+            # print(sampled_neighbors)
+            src = [node] * fanout
+            # print(src)
+            src_nodes.extend(src)
+            dst = sampled_neighbors
+            # print(dst)
+            dst_nodes.extend(dst)
+            for i in range(fanout):
+                MFG.add_edge(src[i], dst[i])
+
+        return [src_nodes, dst_nodes, MFG]
 
     def sample(self, graph, nodes):
         source_nodes = nodes
         for fanout in self.fanouts:
-            source_idices, mfg = self.sample_mfg(graph, nodes, fanout, replace=True)
-            self.MFGs.append(mfg)
+            MFG = self.sample_mfg(graph, source_nodes, fanout, replace=True)
+            self.MFGs.append(MFG)
+            source_nodes = MFG[1]
 
         return self.MFGs

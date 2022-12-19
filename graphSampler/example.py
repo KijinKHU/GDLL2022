@@ -19,25 +19,12 @@ g = GDLLGraph(data_dir, dataset, dataset_features, sep = "\t" )
 # print("node_data: ",g.node_data)
 # neiborsOfOneNode = g.GetNeighbors(31336)
 # print(type(neiborsOfOneNode))
-example_fanout = 3
+fanout = [3,3]
 example_seed_nodes = [('31336'),('1129442')]
 
-
-for seed_node in example_seed_nodes:
-    G_list =  list()
-    G = nx.Graph()
-    edges = g.getEdges(seed_node)
-    neighbors = [e[1] for e in edges]
-    # print(neighbors)
-    print("*"*8)
-    sampled_neighbors = np.random.choice(neighbors, example_fanout)
-    # print(sampled_neighbors)
-    print("seed", seed_node)
-    src = [seed_node] * example_fanout
-    print("scr", src)
-    dst = sampled_neighbors
-    print("dst", dst)
-
+sampler = samplers.NeighborSamplerByNode(fanout)
+MFGs = sampler.sample(g,example_seed_nodes)
+print(MFGs)
 
 
 
