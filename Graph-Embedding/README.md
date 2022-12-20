@@ -112,6 +112,17 @@ Here, classifier = ["decision tree", "dt", "logistic regression", "lr", "random 
 ```
 print("Accuracy:", accuracy(y_test, y_pred))
 ```
+
+
+#### How to run
+##### For learning embedding:
+```
+python main_ge.py
+```
+##### For learning classification:
+```
+python main_trainClf.py
+```
 <!-- LICENSE.txt -->
 ## License
 
