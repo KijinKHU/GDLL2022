@@ -39,8 +39,7 @@ class Struc2Vec(RandomWalkEmbedding):
             self.stay_prob = stay_prob
         self.verbose = verbose
         self.idx2node, self.node2idx = preprocess_nxgraph(graph)
-        # self.idx2node list
-        # self.node2idx dictionary
+
 
         self.nodeEncoder = self.encoder(graph)
         self.idx = list(range(len(self.nodeEncoder.classes_)))
