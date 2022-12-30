@@ -34,8 +34,15 @@ class GDLLGraph:
     def removeEdge(self, edge):
         self.g.remove_edge(*edge)
 
-    def getNodes(self):
+    def getNodes(self, nbunch=None):
+        if nbunch is not None:
+            return self.g.nodes(nbunch)
         return self.g.nodes()
+
+    def getEdges(self, nbunch=None):
+        if nbunch is not None:
+            return self.g.edges(nbunch)
+        return self.g.edges()
 
     def GetNeighbors(self, node):
         try:
@@ -45,6 +52,11 @@ class GDLLGraph:
 
     def removeNode(self, node):
         self.g.remove_node(node)
+
+    def GetSubgraph(self, nbunch=None):
+        if nbunch is not None:
+            return self.g.subgraph(nbunch)
+        return self.g.subgraph()
 
 
 
