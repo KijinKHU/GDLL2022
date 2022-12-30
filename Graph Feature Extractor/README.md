@@ -1,6 +1,6 @@
 This Module provides the services to extract different kinds of features from graph dataset.
 Instructions to use:
-1. Python3.8 as base interpreter.
+1. Install Python3.8 as base interpreter.
 2. Install the required libraries:
 click (>=7.1.1)
 scipy (>=1.4.1)

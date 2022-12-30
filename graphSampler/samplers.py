@@ -14,7 +14,7 @@ class Sampler(object):
 
 class NeighborSamplerByNode(Sampler):
 
-    def __init__(self, fanouts, edge_dir='in', prob=None, mask=None, replace=False):
+    def __init__(self, fanouts, edge_dir='in', replace=False):
         super().__init__()
         if isinstance(fanouts, list):
             self.fanouts = fanouts
