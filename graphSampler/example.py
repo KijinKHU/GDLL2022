@@ -23,4 +23,7 @@ print(g.node_data)
 
 fanouts = "10,10,10"
 
-# sampler = samplers.NeighborSamplerByNode(g, fanouts, edge_dir="in")
+sampler = samplers.NeighborSamplerByNode(g, fanouts, edge_dir="in")
+
+exmaple_seeds = [12134, 11223]
+[src_nodes, dst_nodes, MFG] = sampler.sample(g, exmaple_seeds)
