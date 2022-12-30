@@ -4,7 +4,7 @@ This module provides the services and implementation for various graph embedding
 
 ## Getting Started
 
-## Usage and Tutorial
+### Usage and Tutorial
 #### input graph
 ```
 from utils import loadGraph, saveEmbedding
