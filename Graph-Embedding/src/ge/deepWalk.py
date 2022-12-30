@@ -30,7 +30,7 @@ class DeepWalk(RandomWalkEmbedding):
 
         nodeFeatures[int(wvi[j])] = 1
         return nodeFeatures
-    # https://stackoverflow.com/questions/28656736/using-scikits-labelencoder-correctly-across-multiple-programs
+
     # Training graph embedding model
     def learnEmbedding(self):
         # pkl_file = open('data/deepwalk_encoder.pkl', 'rb')
