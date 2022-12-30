@@ -48,10 +48,6 @@ class RandomWalkEmbedding:
 
     def encoder(self, graph):
         nodeEncoder = preprocessing.LabelEncoder()
-        # print(str(list(graph.nodes())))
-        # nodes_list = list(map(str, list(graph.nodes())))
-        # nodeEncoder.fit(list(map(str, list(graph.nodes()))))
-
         return nodeEncoder.fit(list(graph.nodes()))
 
     # def graph_to_adjList(self, graph):
