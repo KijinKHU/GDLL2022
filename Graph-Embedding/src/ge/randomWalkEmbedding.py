@@ -53,7 +53,6 @@ class RandomWalkEmbedding:
     def getGraph(self):
         return self.graph
 
-
     @abstractmethod
     def generateWalk(self):
         pass
@@ -66,7 +65,6 @@ class RandomWalkEmbedding:
     def learnNodeEmbedding(self):
         pass
 
-
     @abstractmethod
     def getNodeEmbedding(self):
         pass
@@ -74,7 +72,6 @@ class RandomWalkEmbedding:
     @abstractmethod
     def learnEdgeEmbedding(self):
         pass
-
 
     @abstractmethod
     def getEdgeEmbedding(self):
