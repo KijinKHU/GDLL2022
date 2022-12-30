@@ -54,9 +54,7 @@ class RandomWalkEmbedding:
     #     nodeEncoder = self.encoder(graph)
     #     adj_list1 = [None] * graph.number_of_nodes()
     #     for node, edges in list(graph.adjacency()):
-    #         adj_list1[nodeEncoder.transform([str(node)])[0]] = list(nodeEncoder.transform(list(map(str, list(edges.keys())))))
-    #         # adj_list1[nodeEncoder.transform([node])[0]] = list(nodeEncoder.transform(list(edges.keys())))
-    #     return adj_list1, nodeEncoder
+
 
     def getAdjacencyList(self):
         return self.adj_list
