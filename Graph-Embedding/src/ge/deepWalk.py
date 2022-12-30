@@ -74,14 +74,7 @@ class DeepWalk(RandomWalkEmbedding):
                     walk = [int(self.nodeEncoder.transform([int(node)]))]
                 for i in range(self.walkLength - 1):
                     neighborsList = [n for n in self.graph.neighbors(node)]
-                    # if self.graph.has_node(node):
-                    #     neighborsList = [n for n in self.graph.neighbors(node)]
-                    # elif self.graph.has_node(str(node)):
-                    #     neighborsList = [n for n in self.graph.neighbors(str(node))]
-                    # elif self.graph.has_node(int(node)):
-                    #     neighborsList = [n for n in self.graph.neighbors(int(node))]
 
-                    # Randomly traverse a vertex from a neighbors of node 'node"
                     node = neighborsList[random.randint(0,len(neighborsList)-1)]
                     if self.graph.has_node(node):
                         try:
