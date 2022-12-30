@@ -5,7 +5,7 @@ import os
 import json
 from grakel import GraphKernel
 
-
+# morshed,KHU
 #
 data_dir = ""
 dataset = "cora.cites"
