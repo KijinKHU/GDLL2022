@@ -12,7 +12,6 @@ from deepWalk import DeepWalk
 from node2vec import Node2vec
 from skipgram import SkipGramModel
 
-
 # Set Path to Data
 data_dir = "Your Path to Data"
 dataset = "File/Dataset Name"
@@ -111,6 +110,17 @@ Here, classifier = ["decision tree", "dt", "logistic regression", "lr", "random 
 #### Get Accuracy
 ```
 print("Accuracy:", accuracy(y_test, y_pred))
+```
+
+
+#### How to run
+##### For learning embedding:
+```
+python main_ge.py
+```
+##### For learning classification:
+```
+python main_trainClf.py
 ```
 <!-- LICENSE.txt -->
 ## License

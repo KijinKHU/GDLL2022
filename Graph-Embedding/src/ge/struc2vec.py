@@ -13,7 +13,7 @@ from csv import reader
 try:
     from utils import partition_dict, preprocess_nxgraph, get_vertices, create_alias_table, cost, cost_max, \
         compute_dtw_dist, convert_dtw_struc_dist, operator_hadamard, custom_formatwarning
-    from biasedRandomWalk import BiasedWalker
+    from .biasedRandomWalk import BiasedWalker
     from randomWalkEmbedding import RandomWalkEmbedding
 except ModuleNotFoundError:
     from .utils import partition_dict, preprocess_nxgraph, get_vertices, create_alias_table, cost, cost_max, \
