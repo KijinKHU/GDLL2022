@@ -50,12 +50,6 @@ class RandomWalkEmbedding:
         nodeEncoder = preprocessing.LabelEncoder()
         return nodeEncoder.fit(list(graph.nodes()))
 
-    # def graph_to_adjList(self, graph):
-    #     nodeEncoder = self.encoder(graph)
-    #     adj_list1 = [None] * graph.number_of_nodes()
-    #     for node, edges in list(graph.adjacency()):
-
-
     def getAdjacencyList(self):
         return self.adj_list
 
