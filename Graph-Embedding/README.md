@@ -4,14 +4,13 @@ This module provides the services and implementation for various graph embedding
 
 ## Getting Started
 
-## Usage and Tutorial
+### Usage and Tutorial
 #### input graph
 ```
 from utils import loadGraph, saveEmbedding
 from deepWalk import DeepWalk
 from node2vec import Node2vec
 from skipgram import SkipGramModel
-
 
 # Set Path to Data
 data_dir = "Your Path to Data"

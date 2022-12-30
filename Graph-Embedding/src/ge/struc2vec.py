@@ -13,7 +13,7 @@ from csv import reader
 try:
     from utils import partition_dict, preprocess_nxgraph, get_vertices, create_alias_table, cost, cost_max, \
         compute_dtw_dist, convert_dtw_struc_dist, operator_hadamard, custom_formatwarning
-    from biasedRandomWalk import BiasedWalker
+    from .biasedRandomWalk import BiasedWalker
     from randomWalkEmbedding import RandomWalkEmbedding
 except ModuleNotFoundError:
     from .utils import partition_dict, preprocess_nxgraph, get_vertices, create_alias_table, cost, cost_max, \
@@ -39,8 +39,7 @@ class Struc2Vec(RandomWalkEmbedding):
             self.stay_prob = stay_prob
         self.verbose = verbose
         self.idx2node, self.node2idx = preprocess_nxgraph(graph)
-        # self.idx2node list
-        # self.node2idx dictionary
+
 
         self.nodeEncoder = self.encoder(graph)
         self.idx = list(range(len(self.nodeEncoder.classes_)))

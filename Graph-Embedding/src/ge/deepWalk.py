@@ -30,13 +30,13 @@ class DeepWalk(RandomWalkEmbedding):
 
         nodeFeatures[int(wvi[j])] = 1
         return nodeFeatures
-    # https://stackoverflow.com/questions/28656736/using-scikits-labelencoder-correctly-across-multiple-programs
+
     # Training graph embedding model
     def learnEmbedding(self):
-        # pkl_file = open('../data/deepwalk_encoder.pkl', 'rb')
+        # pkl_file = open('data/deepwalk_encoder.pkl', 'rb')
         # nodeEncoder_pkl_file = pickle.load(pkl_file)
         # pkl_file.close()
-        f = open('../data/ML_input.csv', 'r')
+        f = open('data/ML_input.csv', 'r')
         file_reader = reader(f)
         for wvi in file_reader:
             for j in range(len(wvi)):
@@ -54,7 +54,7 @@ class DeepWalk(RandomWalkEmbedding):
     # Walks generation
     def RandomWalk(self):
 
-        f = open('../data/ML_input.csv', 'w', newline ='')
+        f = open('data/ML_input.csv', 'w', newline ='')
         nodesList = list(self.graph.nodes)
         # Number of walks for a single vertex
         for i in range(self.numbOfWalksPerVertex):
@@ -74,14 +74,7 @@ class DeepWalk(RandomWalkEmbedding):
                     walk = [int(self.nodeEncoder.transform([int(node)]))]
                 for i in range(self.walkLength - 1):
                     neighborsList = [n for n in self.graph.neighbors(node)]
-                    # if self.graph.has_node(node):
-                    #     neighborsList = [n for n in self.graph.neighbors(node)]
-                    # elif self.graph.has_node(str(node)):
-                    #     neighborsList = [n for n in self.graph.neighbors(str(node))]
-                    # elif self.graph.has_node(int(node)):
-                    #     neighborsList = [n for n in self.graph.neighbors(int(node))]
 
-                    # Randomly traverse a vertex from a neighbors of node 'node"
                     node = neighborsList[random.randint(0,len(neighborsList)-1)]
                     if self.graph.has_node(node):
                         try:

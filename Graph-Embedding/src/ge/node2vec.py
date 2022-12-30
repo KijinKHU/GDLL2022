@@ -7,7 +7,7 @@ import pickle
 import csv
 from csv import reader
 from sklearn import preprocessing
-import networkx as nx
+
 try:
     from utils import operator_hadamard, custom_formatwarning
     from randomWalkEmbedding import RandomWalkEmbedding
@@ -40,7 +40,7 @@ class Node2vec(RandomWalkEmbedding):
     def encoder(self, graph):
 
         nodeEncoder = preprocessing.LabelEncoder()
-        # print(str(list(graph.nodes())))
+
         # nodes_list = list(map(str, list(graph.nodes())))
         # nodeEncoder.fit(list(graph.nodes()))
         # nodeEncoder.fit(list(map(str, list(graph.nodes()))))

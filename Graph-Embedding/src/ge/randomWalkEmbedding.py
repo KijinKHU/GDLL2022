@@ -43,31 +43,15 @@ class RandomWalkEmbedding:
         self.nodeEncoder = self.encoder(graph)
         self.totalNodes = graph.number_of_nodes()
 
-
-
-
     def encoder(self, graph):
         nodeEncoder = preprocessing.LabelEncoder()
-        # print(str(list(graph.nodes())))
-        # nodes_list = list(map(str, list(graph.nodes())))
-        # nodeEncoder.fit(list(map(str, list(graph.nodes()))))
-
         return nodeEncoder.fit(list(graph.nodes()))
-
-    # def graph_to_adjList(self, graph):
-    #     nodeEncoder = self.encoder(graph)
-    #     adj_list1 = [None] * graph.number_of_nodes()
-    #     for node, edges in list(graph.adjacency()):
-    #         adj_list1[nodeEncoder.transform([str(node)])[0]] = list(nodeEncoder.transform(list(map(str, list(edges.keys())))))
-    #         # adj_list1[nodeEncoder.transform([node])[0]] = list(nodeEncoder.transform(list(edges.keys())))
-    #     return adj_list1, nodeEncoder
 
     def getAdjacencyList(self):
         return self.adj_list
 
     def getGraph(self):
         return self.graph
-
 
     @abstractmethod
     def generateWalk(self):
@@ -81,7 +65,6 @@ class RandomWalkEmbedding:
     def learnNodeEmbedding(self):
         pass
 
-
     @abstractmethod
     def getNodeEmbedding(self):
         pass
@@ -89,7 +72,6 @@ class RandomWalkEmbedding:
     @abstractmethod
     def learnEdgeEmbedding(self):
         pass
-
 
     @abstractmethod
     def getEdgeEmbedding(self):
