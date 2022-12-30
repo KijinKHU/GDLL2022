@@ -1,8 +1,11 @@
 # Graph Sampler
 
+## Load Graph data
+
 g = GDLLGraph(data_dir, dataset, dataset_features, sep = "\t" )
 print(g.node_data)
 
+## Set example settings
 fanouts = "10,10,10"
 exmaple_seeds = [12134, 11223] 
 
