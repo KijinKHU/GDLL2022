@@ -43,9 +43,6 @@ class RandomWalkEmbedding:
         self.nodeEncoder = self.encoder(graph)
         self.totalNodes = graph.number_of_nodes()
 
-
-
-
     def encoder(self, graph):
         nodeEncoder = preprocessing.LabelEncoder()
         return nodeEncoder.fit(list(graph.nodes()))
